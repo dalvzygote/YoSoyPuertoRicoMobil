@@ -1,10 +1,16 @@
 package org.yspr.yosoypuertoricomobil;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import org.yspr.yosoypuertoricomobil.dummy.DummyContent;
@@ -49,15 +55,47 @@ public class SerPuertoRicoDetailFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View rootView = inflater.inflate(
-				R.layout.fragment_serpuertorico_detail, container, false);
+		final View rootView;
+		try {
+			if (mItem.id == "Tu Retrato")
+			{
+				rootView = inflater.inflate(
+						R.layout.insert_word, container, false);
+				if (mItem != null) {
+					((EditText) rootView.findViewById(R.id.editText1))
+							.setText("Quien tu eres?");
+				}
+				final Button button = (Button) rootView.findViewById(R.id.button1);
+				button.setOnTouchListener(new OnTouchListener(){
 
-		// Show the dummy content as text in a TextView.
-		if (mItem != null) {
-			((TextView) rootView.findViewById(R.id.serpuertorico_detail))
-					.setText(mItem.content);
+					@Override
+					public boolean onTouch(View v, MotionEvent event) {
+						// TODO Auto-generated method stub
+						Intent i = new Intent(getActivity(), CustomIAPRActivity.class);
+						i.putExtra("iam_word",((EditText) rootView.findViewById(R.id.editText1))
+							.getText().toString());
+						startActivity(i);
+						return false;
+					}}	
+					);
+				
+			}else{
+			rootView = inflater.inflate(
+					R.layout.fragment_serpuertorico_detail, container, false);
+
+			// Show the dummy content as text in a TextView.
+			if (mItem != null) {
+				((TextView) rootView.findViewById(R.id.serpuertorico_detail))
+						.setText(mItem.content);
+			}
+			}
+			return rootView;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			Log.e("PORTRAIT_FRAG",e.toString());
+			return null;
 		}
 
-		return rootView;
+		
 	}
 }
