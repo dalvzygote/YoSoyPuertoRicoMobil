@@ -1,5 +1,7 @@
 package org.yspr.yosoypuertoricomobil;
 
+import com.google.analytics.tracking.android.EasyTracker;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -21,7 +23,8 @@ import android.support.v4.app.FragmentActivity;
  * selections.
  */
 public class SerPuertoRicoListActivity extends FragmentActivity implements
-		SerPuertoRicoListFragment.Callbacks {
+SerPuertoRicoListFragment.Callbacks {
+
 
 	/**
 	 * Whether or not the activity is in two-pane mode, i.e. running on a tablet
@@ -51,6 +54,23 @@ public class SerPuertoRicoListActivity extends FragmentActivity implements
 		// TODO: If exposing deep links into your app, handle intents here.
 	}
 
+	@Override
+	protected void onStart() {
+		// TODO Auto-generated method stub
+		super.onStart();
+		// The rest of your onStart() code.
+	    EasyTracker.getInstance().activityStart(this); // Add this method.
+	}
+
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		// The rest of your onStop() code.
+	    EasyTracker.getInstance().activityStop(this); // Add this method.
+		super.onStop();
+	}
+
+
 	/**
 	 * Callback method from {@link SerPuertoRicoListFragment.Callbacks}
 	 * indicating that the item with the given ID was selected.
@@ -66,8 +86,8 @@ public class SerPuertoRicoListActivity extends FragmentActivity implements
 			SerPuertoRicoDetailFragment fragment = new SerPuertoRicoDetailFragment();
 			fragment.setArguments(arguments);
 			getSupportFragmentManager().beginTransaction()
-					.replace(R.id.serpuertorico_detail_container, fragment)
-					.commit();
+			.replace(R.id.serpuertorico_detail_container, fragment)
+			.commit();
 
 		} else {
 			// In single-pane mode, simply start the detail activity
