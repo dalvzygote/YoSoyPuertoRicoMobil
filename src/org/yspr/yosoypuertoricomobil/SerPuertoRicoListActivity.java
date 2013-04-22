@@ -1,6 +1,6 @@
 package org.yspr.yosoypuertoricomobil;
 
-import com.google.analytics.tracking.android.EasyTracker;
+//import com.google.analytics.tracking.android.EasyTracker;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -44,7 +44,7 @@ SerPuertoRicoListFragment.Callbacks {
 			// activity should be in two-pane mode.
 			mTwoPane = true;
 
-			// In two-pane mode, list items should be given the
+			// In `two-pane mode, list items should be given the
 			// 'activated' state when touched.
 			((SerPuertoRicoListFragment) getSupportFragmentManager()
 					.findFragmentById(R.id.serpuertorico_list))
@@ -59,14 +59,14 @@ SerPuertoRicoListFragment.Callbacks {
 		// TODO Auto-generated method stub
 		super.onStart();
 		// The rest of your onStart() code.
-	    EasyTracker.getInstance().activityStart(this); // Add this method.
+	    //EasyTracker.getInstance().activityStart(this); // Add this method.
 	}
 
 	@Override
 	protected void onStop() {
 		// TODO Auto-generated method stub
 		// The rest of your onStop() code.
-	    EasyTracker.getInstance().activityStop(this); // Add this method.
+	    //EasyTracker.getInstance().activityStop(this); // Add this method.
 		super.onStop();
 	}
 

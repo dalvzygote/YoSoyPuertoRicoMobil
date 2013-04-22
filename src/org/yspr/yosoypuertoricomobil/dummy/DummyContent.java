@@ -27,7 +27,7 @@ public class DummyContent {
 		// Add 3 sample items.
 		addItem(new DummyItem("Su Retrato", "Su Retrato"));
 		addItem(new DummyItem("Tu Retrato", "Tu Retrato"));
-		addItem(new DummyItem("Nuestro Mapa", "Nuestro Mapa"));
+		addItem(new DummyItem("Nuestros Videos", "Nuestro Mapa"));
 	}
 
 	private static void addItem(DummyItem item) {

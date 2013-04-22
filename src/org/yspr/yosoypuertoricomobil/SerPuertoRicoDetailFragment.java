@@ -1,6 +1,7 @@
 package org.yspr.yosoypuertoricomobil;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -11,7 +12,9 @@ import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.GridView;
+//import android.widget.TextView;
+import android.widget.VideoView;
 
 import org.yspr.yosoypuertoricomobil.dummy.DummyContent;
 
@@ -21,6 +24,8 @@ import org.yspr.yosoypuertoricomobil.dummy.DummyContent;
  * (on tablets) or a {@link SerPuertoRicoDetailActivity} on handsets.
  */
 public class SerPuertoRicoDetailFragment extends Fragment {
+	
+
 	/**
 	 * The fragment argument representing the item ID that this fragment
 	 * represents.
@@ -31,6 +36,9 @@ public class SerPuertoRicoDetailFragment extends Fragment {
 	 * The dummy content this fragment is presenting.
 	 */
 	private DummyContent.DummyItem mItem;
+	private SelfPortraitImageAdapter selfPortraitImageAdapter;
+	public static View rootView;
+	public static VideoView myVid;
 
 	/**
 	 * Mandatory empty constructor for the fragment manager to instantiate the
@@ -42,7 +50,9 @@ public class SerPuertoRicoDetailFragment extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		Log.d("FRAGMENTDETAIL", "before selfPortraitImage Adapter init");
+		selfPortraitImageAdapter = new SelfPortraitImageAdapter(getActivity());
+		Log.d("FRAGMENTDETAIL", "after selfPortraitImage Adapter init");
 		if (getArguments().containsKey(ARG_ITEM_ID)) {
 			// Load the dummy content specified by the fragment
 			// arguments. In a real-world scenario, use a Loader
@@ -51,51 +61,78 @@ public class SerPuertoRicoDetailFragment extends Fragment {
 					ARG_ITEM_ID));
 		}
 	}
+	
+	@Override
+	public void onStart() {
+		// TODO Auto-generated method stub
+		super.onStart();
+		if (myVid != null){
+			myVid.requestFocus();
+			myVid.start();
+		}
+		}
+
+	@Override
+	public void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		final View rootView;
-		try {
-			if (mItem.id == "Tu Retrato")
-			{
-				rootView = inflater.inflate(
-						R.layout.insert_word, container, false);
+		
+		
+			if (mItem.id == "Tu Retrato") {
+				rootView = inflater.inflate(R.layout.insert_word, container,
+						false);
 				if (mItem != null) {
 					((EditText) rootView.findViewById(R.id.editText1))
 							.setText("Quien tu eres?");
 				}
-				final Button button = (Button) rootView.findViewById(R.id.button1);
-				button.setOnTouchListener(new OnTouchListener(){
+				final Button button = (Button) rootView
+						.findViewById(R.id.button1);
+				button.setOnTouchListener(new OnTouchListener() {
 
 					@Override
 					public boolean onTouch(View v, MotionEvent event) {
 						// TODO Auto-generated method stub
-						Intent i = new Intent(getActivity(), CustomIAPRActivity.class);
-						i.putExtra("iam_word",((EditText) rootView.findViewById(R.id.editText1))
-							.getText().toString());
+						Intent i = new Intent(getActivity(),
+								CustomIAPRActivity.class);
+						i.putExtra("iam_word", ((EditText) rootView
+								.findViewById(R.id.editText1)).getText()
+								.toString());
 						startActivity(i);
 						return false;
-					}}	
-					);
-				
-			}else{
-			rootView = inflater.inflate(
-					R.layout.fragment_serpuertorico_detail, container, false);
+					}
+				});
 
-			// Show the dummy content as text in a TextView.
-			if (mItem != null) {
-				((TextView) rootView.findViewById(R.id.serpuertorico_detail))
-						.setText(mItem.content);
-			}
-			}
+			} else if (mItem.id == "Nuestros Videos") {
+				rootView = inflater.inflate(R.layout.video_gallery,
+						container, false);
+				if (mItem != null) {
+					myVid = (VideoView) rootView
+							.findViewById(R.id.videoView1);
+					Uri vPath   = Uri.parse("android.resource://com.pac.myapp/raw/yspr_gamejam2");
+					myVid.setVideoURI(vPath);
+					
+
+				}
+			} else if(rootView != null){
+			
+				rootView = inflater.inflate(R.layout.portrait_gallery,
+						container, false);
+
+				// Show the dummy content as text in a TextView.
+				if (mItem != null) {
+					GridView gridView = (GridView) rootView
+							.findViewById(R.id.grid_view);
+
+					// Instance of ImageAdapter Class
+					gridView.setAdapter(selfPortraitImageAdapter);
+				}}
+			
 			return rootView;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			Log.e("PORTRAIT_FRAG",e.toString());
-			return null;
-		}
 
-		
 	}
 }
