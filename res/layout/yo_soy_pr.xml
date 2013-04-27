@@ -27,6 +27,7 @@
         android:id="@+id/iam_word"
         style="@style/EditIAM"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="@string/portrait_bottom_title" />
 
 </RelativeLayout>

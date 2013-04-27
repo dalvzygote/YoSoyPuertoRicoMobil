@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">YoSoyPuertoRicoMobil</string>
+    <string name="app_name">YoSoyPR</string>
+     <string name="app_name_complete">Yo Soy Puerto Rico</string>
     <string name="title_serpuertorico_detail">Ser Puerto Rico Detail</string>
-    <string name="portrait_top_title">Yo Soy Puerto Rico y...</string>
+    <string name="portrait_top_title">YO SOY PUERTO RICO Y</string>
+    <string name="follow_steps">Describe con una palabra tu aportacion a Puerto Rico, tirate una foto y luego posteala en nuestra pagina de Facebook para unirte a las miles de personas que estan formando parte del movimiento que resalta lo positivo de Puerto Rico!</string>
+    <string name="your_contribution">¿Qué aporto?</string>
+      <string name="about_title">Sobre Nosotros</string>
+       <string name="about_absrtract">Somos una Organización sin fines de lucro con una misión de cambiar la perspectiva negativa que tienen los puertorriquenos sobre Puerto Rico y exponer a todas a las personas que provocan un cambio en nuestra sociedad.</string>
+      <string name="about_inititl">Iniciativas</string>
+       	<string name="about_inicontent1">Creamos un movimiento social con el propósito de exponer a todas las personas que provocan un cambio nuestra sociedad. Para unirte al movimiento tómate una foto que contenga el siguiente mensaje: "Yo Soy Puerto Rico y Soy _____" y con una palabra, resume tu aportación para PR. "Posteala" en nuestra pagina de Facebook y únete a las miles de personas que ya han enviado sus fotos.</string>
+        <string name="about_inicontent2">Lanzamos "Yo Soy PR En Acción", una serie de vídeos que expone a personas que día a día hacen la diferencia en Puerto Rico.</string>
+      <string name="about_infotitle">Información</string>
+        <string name="about_email">Email: eduardo.joy@yosoypr.com</string>
+        <string name="about_founder">Fundador: Eduardo M. Joy Rivera </string>
+        <string name="about_phone">Teléfono: 7872420393</string>
+     <string name="error_player">There was an error initializing the YouTubePlayer (%1$s)</string>
+	<string name="fullscreen_tutorial">This is a demo which shows how to handle fullscreen behaviour. This activity has differents layouts for portrait, landscape and fullscreen. The user can enter fullscreen either by using the player controller or programmatically by the programmer (here using a button). If your activity does not have a landscape layout, you can choose to automatically enter fullscreen when the device is rotated to landscape orientation.</string>
+    <string name="enter_fullscreen">Enter Fullscreen</string>
+    <string name="landscape_fullscreen">Always fullscreen in landscape</string>
+     
 </resources>

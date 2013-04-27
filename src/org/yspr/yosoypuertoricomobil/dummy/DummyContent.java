@@ -25,9 +25,15 @@ public class DummyContent {
 
 	static {
 		// Add 3 sample items.
-		addItem(new DummyItem("Su Retrato", "Su Retrato"));
-		addItem(new DummyItem("Tu Retrato", "Tu Retrato"));
-		addItem(new DummyItem("Nuestros Videos", "Nuestro Mapa"));
+		addItem(new DummyItem("Sobre Nosotros", "Sobre Nosotros"));
+		addItem(new DummyItem("Somos Puerto Rico", "Somos Puerto rico"));
+		addItem(new DummyItem("Nuestros Videos", "Nuestros Videos"));
+		addItem(new DummyItem("Tu Aportación", "Tu Aportación"));
+		addItem(new DummyItem("Sitio Web", "Sitio Web"));
+		addItem(new DummyItem("Instagram", "Instagram"));
+		addItem(new DummyItem("YouTube", "YouTube"));
+		
+		
 	}
 
 	private static void addItem(DummyItem item) {

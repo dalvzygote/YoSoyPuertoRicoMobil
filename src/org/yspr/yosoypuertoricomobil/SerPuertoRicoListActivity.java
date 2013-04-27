@@ -2,6 +2,7 @@ package org.yspr.yosoypuertoricomobil;
 
 //import com.google.analytics.tracking.android.EasyTracker;
 
+import org.yspr.yosoypuertoricomobil.R;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -24,9 +25,7 @@ import android.support.v4.app.FragmentActivity;
  */
 public class SerPuertoRicoListActivity extends FragmentActivity implements
 SerPuertoRicoListFragment.Callbacks {
-
-
-	/**
+		/**
 	 * Whether or not the activity is in two-pane mode, i.e. running on a tablet
 	 * device.
 	 */
@@ -98,4 +97,6 @@ SerPuertoRicoListFragment.Callbacks {
 			startActivity(detailIntent);
 		}
 	}
+	
+
 }
